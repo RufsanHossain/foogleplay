@@ -1,0 +1,88 @@
+/* =====================================
+Base styles for generic elements
+======================================== */
+body, *, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e5e5e5;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+h1 {
+    font-size: 1.8em;
+    line-height: 1em;
+}
+
+h2 {
+    font-size: 1.4em;
+    line-height: 1em;
+}
+
+a, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+em {
+    font-weight: bold;
+}
+
+small {
+    font-size: 0.8em;
+}
+
+/* =====================================
+Layout components
+======================================== */
+.l-pad {
+    padding: 1em;
+}
+
+.sidebar {
+    width: 25%;
+    min-width: 250px;
+}
+
+/* =====================================
+Modular and resusable styles
+======================================== */
+.clearfix {
+    overflow: hidden;
+}
+
+.logo {
+    font-family: 'Stoke', serif;
+}
+
+  .logo h1 {
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+
+.logo-sub {
+    font-size: 0.6em;
+    color: #333;
+    font-weight: 100;
+}
+
+.topbar {
+    background-color: #fff;
+}
+
+.topbar-title {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-weight: 300;
+    background-color: #1aa1e1;
+    float: left;
+}
+  .topbar-title > i {
+    font-size: 1.5em;
+  }
+  .topbar-title > h2 {
+    display: inline-block;
+  }
