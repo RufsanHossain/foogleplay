@@ -62,6 +62,16 @@ Layout components
     padding-left: 280px;
 }
 
+.row {
+    display: table;
+    width: 100%;
+}
+
+.column {
+    display: table-cell;
+    vertical-align: top;
+}
+
 /* =====================================
 Modular and resusable styles
 ======================================== */
@@ -143,3 +153,29 @@ Modular and resusable styles
   .thumb-link:hover > .overlay {
     display: block;
   }
+
+.books, 
+.book {
+    display: none;
+}
+
+.book-header {
+    border-bottom: 2px solid #ccc;
+}
+
+.title {
+    font-size: 1.8em;
+    line-height: 1em;
+    padding-bottom: 0.2em;
+}
+
+.thumb-image {
+    width: 200px;
+}
+
+/* =====================================
+classes describing states
+======================================== */
+.is-visible {
+    display: block;
+}
