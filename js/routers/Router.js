@@ -15,7 +15,9 @@ app.routers.Router = Backbone.Router.extend({
         app.data.currentView = app.views.BooksList({
             collection: app.data.books
         });
-        app.data.books.fetch();
+        this._activateBooksListPanel();
+        $('[data-id=books-list]'.append(app.data.currentView.$el));
+        app.data.books.fetch({ reset: true });
     },
 
     book: function (id, bookId) {
@@ -23,5 +25,15 @@ app.routers.Router = Backbone.Router.extend({
     },
     unknown: function () {
         console.log("Unknown route");
+    },
+
+    _activateBooksListPanel: function (selector) {
+        $('[data-id=books-wrapper] .is-visible').removeClass('is-visible');
+        $('[data-id=books-list]').addClass('is-visible');
+    },
+
+    _activateBookDetailPanel: function (selector) {
+        $('[data-id=books-wrapper] .is-visible').removeClass('is-visible');
+        $('[data-id=books-list]').addClass('is-visible');
     }
 });
