@@ -25,17 +25,25 @@ app.routers.Router = Backbone.Router.extend({
 
     book: function (id, bookId) {
         console.log("Book: " + bookId + " for category, " + id);
+        app.data.book = new app.models.Book({ id: bookId });
+        this._cleanupCurrentView();
+        app.data.currentView = new app.views.BookDetail({
+            model: app.data.book
+        });
+        this._activateBookDetailPanel();
+        $('[data-id=book]').empty().append(app.data.currentView.$el);
+        app.data.book.fetch();
     },
     unknown: function () {
         console.log("Unknown route");
     },
 
-    _activateBooksListPanel: function (selector) {
+    _activateBooksListPanel: function () {
         $('[data-id="books-wrapper"] .is-visible').removeClass('is-visible');
         $('[data-id=books-list]').addClass('is-visible');
     },
 
-    _activateBookDetailPanel: function (selector) {
+    _activateBookDetailPanel: function () {
         $('[data-id="books-wrapper"] .is-visible').removeClass('is-visible');
         $('[data-id=book]').addClass('is-visible');
     },
