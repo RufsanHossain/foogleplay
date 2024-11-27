@@ -4,7 +4,14 @@ app.views.BookDetail = Backbone.View.extend({
     },
     render: function () {
 
-        var images = this.model.get("volumeInfo").imageLinks;
+        var info = this.model.get("volumeInfo");
+        var images = info.imageLinks;
+
+        var publisher = "";
+
+        if (info.publisher) {
+            publisher = info.publisher + ' - Publisher';
+        }
 
         this.$el.html(
             '<header class="book-header content content-constrained row">' +
@@ -12,18 +19,16 @@ app.views.BookDetail = Backbone.View.extend({
             '<img src="' + (images.small || images.thumbnail) + '" alt="">' +
             '</div>' +
             '<div class="column l-pad">' +
-            '<div class="title">Six Scifi Stories Volume Four</div>' +
+            '<div class="title">' + info.title + '</div>' +
             '<div>' +
-            '<em>Robert Jesconek</em> - 2014-04-23 <br>' +
-            'Pie Press - Publisher' +
+            (info.authors ? '<em>' + info.authors.join(" - ") + '</em>' : "" + info.publishedDate) + ' <br>' +
+            publisher +
             '</div>' +
             '</div>' +
             '</header>' +
             '<div class="content book-content content-constrained standout">' +
             '<h1 class="title">Description</h1>' +
-            '<p>' +
-            'Six Scifi Stories Volume Four is a collection of six novels by Robert Jesconek, published by Pie Press.The stories are set in the 21st century, and they explore themes such as love, morality, and the nature of reality.' +
-            '</p >' +
+            info.description +
             '</div >'
         );
 
