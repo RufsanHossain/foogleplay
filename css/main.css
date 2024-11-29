@@ -58,8 +58,10 @@ Layout components
     padding: 1em;
 }
 
-.content-constrained {
-    padding-left: 280px;
+@media (min-width: 700px) {
+    .content-constrained {
+        padding-left: 280px;
+    }
 }
 
 .row {
@@ -116,21 +118,29 @@ Modular and resusable styles
     color: #fff;
     font-weight: 300;
     background-color: #1aa1e1;
-    float: left;
+    display: inline-block;
 }
-  .topbar-title > i {
+  .topbar-title i {
     font-size: 1.5em;
+    margin-right: 0.5em;
   }
   .topbar-title > h2 {
     display: inline-block;
   }
 
 .categories {
+    display: none;
     position: absolute;
     z-index: 999;
     font-size: 1.2em;
     line-height: 2em;
     padding: 0.5em 0;
+}
+
+@media (min-width: 700px) {
+    .categories {
+        display: block;
+    }
 }
   .categories a {
     display: block;
@@ -141,10 +151,14 @@ Modular and resusable styles
     background-color: #e5e5e5;
   }
 
+.thumbs {
+    text-align: center;
+}
+
 .thumb {
+    display: inline-block;
     margin: 0.6em 0.4em;
-    height: 207px;
-    float: left;
+    max-height: 207px;
 }
   .thumb-link {
     display: block;
