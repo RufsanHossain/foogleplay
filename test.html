@@ -28,15 +28,17 @@
     <script type="text/html" data-id="book-detail-view">
         <header class="book-header content content-constrained row"> 
             <div class="column thumb-image">
-                <img src="<%= (images.small || images.thumbnail) %>" alt="Book Thumbnail">
+                <img src="<%= (images.small || images.thumbnail) %>" alt="">
             </div>
             <div class="column l-pad">
                 <div class="title"><%= info.title %></div>
-                <div>
-                    <%= (info.authors ? "<em>" + info.authors.join(" - ") + "</em>" : "") %>
-                    <br>
-                    <%= publisher %> (<%= info.publishedDate %>)
-                </div> 
+            <div>
+                <span data-id="date-authors"><%= 
+                    (info.authors ? "<em>" + info.authors.join(" - ") + "</em> - " : "") + info.publishedDate 
+                %></span>
+                <br>
+                <span data-id="publisher"><%= publisher %></span>
+            </div> 
             </div>
         </header>
         <div class="content book-content content-constrained standout">

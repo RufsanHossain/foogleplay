@@ -134,9 +134,11 @@
             <div class="column l-pad">
                 <div class="title"><%= info.title %></div>
             <div>
-                <%= (info.authors ? "<em>" + info.authors.join(" - ") + "</em>" : "" + info.publishedDate) %>
+                <span data-id="date-authors"><%= 
+                    (info.authors ? "<em>" + info.authors.join(" - ") + "</em> - " : "") + info.publishedDate 
+                %></span>
                 <br>
-                <%= publisher %>
+                <span data-id="publisher"><%= publisher %></span>
             </div> 
             </div>
         </header>

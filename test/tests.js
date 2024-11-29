@@ -35,6 +35,38 @@ describe("views/BookDetail", function () {
     });
     describe("when rendering", function () {
 
+        var modelTemplate = {
+            "volumeInfo": {
+                "title": "Science Fiction",
+                "subtitle": "The 100 Best Novels : an English-language Selection, 1949-1984",
+                "authors": [
+                    "David Pringle"
+                ],
+                // "publisher": "Carroll & Graff Publishers",
+                "publishedDate": "1997",
+                "description": "This guide will appeal to both newcomers and connoisseurs of the genre. Informative and readable, Pringle's choices focus on landmarks by Ray Bradbury, Alfred Bester and J. G. Ballard, unearth such lesser known talents as Ian Watson, Octavia Butler and Joanna Russ, and highlights breakthrough novels by William Gibson and Philip K. Dick.",
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.co.uk/books?id=FYtvHQAACAAJ&printsec=frontcover&img=1&zoom=5&imgtk=AFLRE728FHU8gi_QzmBC9IbfblRzITjzGxXGVYyeJ-38CbuSCpkcYTRzpj1UfP9CzMaLE1xkrplBI0CsTOk1R8L69WqmGgCHggji_59PKCevSdccevjMzhA&source=gbs_api",
+                    "thumbnail": "http://books.google.co.uk/books?id=FYtvHQAACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73hha9HUrm_RIVHvPmdjo2dO_94TFkbbLx5-hRYDxuISeKSLQfHjV2DY2exmUao-rY7E62sfbPTRXDW8-VX5V-fDtDMq-FqE-_GLpWcODogWztyJcM&source=gbs_api"
+                }
+            }
+        };
+
+        it("it doesn't display the publisher if not present in the JSON data", function () {
+            var model = new app.models.Book(modelTemplate);
+            var view = new app.views.BookDetail({ model: model });
+
+            view.render();
+            expect(view.$('[data-id=publisher]').html()).to.equal("");
+        });
+
+        it("it renders the author and published date", function () {
+            var model = new app.models.Book(modelTemplate);
+            var view = new app.views.BookDetail({ model: model });
+
+            view.render();
+            expect(view.$('[data-id=date-authors]').text()).to.equal("David Pringle - 1997");
+        });
     });
 
 });
