@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foogle Play Unit Test</title>
+
+    <!-- mocha libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/11.0.0/mocha.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/11.0.0/mocha.js"></script>
+
+    <!-- chai libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/5.1.2/chai.js"></script>
+
+    <!-- sinon libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/19.0.2/sinon.js"></script>
+</head>
+<body>
+    <div id="mocha"></div>
+
+    <script>
+        mocha.setup("bdd");
+        expect = chai.expect;
+        assert = chai.assert;
+
+        window.onload = function() {
+            window.mocha.run();
+        }
+    </script>
+
+    <script type="text/html" data-id="book-detail-view">
+        <header class="book-header content content-constrained row"> 
+            <div class="column thumb-image">
+                <img src="<%= (images.small || images.thumbnail) %>" alt="">
+            </div>
+            <div class="column l-pad">
+                <div class="title"><%= info.title %></div>
+            <div>
+                <%= (info.authors ? "<em>" + info.authors.join(" - ") + "</em>" : "" + info.publishedDate) %>
+                <br>
+                <%= publisher %>
+            </div> 
+            </div>
+        </header>
+        <div class="content book-content content-constrained standout">
+            <h1 class="title">Description</h1>
+            <%= info.description %>
+        </div>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/routers/Router.js"></script>
+    <script src="/js/models/Book.js"></script>
+    <script src="/js/models/Books.js"></script>
+    <script src="/js/views/BooksList.js"></script>
+    <script src="/js/views/BookDetail.js"></script>
+    <script src="/js/views/TopBar.js"></script>
+
+    <script src="/test/tests.js"></script>
+</body>
+</html>
