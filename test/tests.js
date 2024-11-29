@@ -16,3 +16,25 @@ describe("models/Books", function () {
         expect(books.url()).to.equal('api/books_categoryId.json');
     });
 });
+
+describe("views/BookDetail", function () {
+
+    describe("when initializing", function () {
+        it("It re-renders when the model changes", function () {
+            var model = new app.models.Book({ id: "id1" });
+
+            var render = sinon.stub(app.views.BookDetail.prototype, "render");
+            var view = new app.views.BookDetail({ model: model });
+
+            model.set("property", "value");
+
+            expect(render.called).to.be.true;
+
+            app.views.BookDetail.prototype.render.restore();
+        });
+    });
+    describe("when rendering", function () {
+
+    });
+
+});
