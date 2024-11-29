@@ -128,6 +128,12 @@ Modular and resusable styles
     display: inline-block;
   }
 
+@media (min-width: 700px) {
+    .category-toggle {
+        display: none;
+    }
+}
+
 .categories {
     display: none;
     position: absolute;

@@ -31,21 +31,21 @@
                 <h1>Foogle <span class="logo-sub">play</span></h1>
             </div>
         </div>
-        <div class="topbar clearfix">
+        <div class="topbar clearfix" data-id="topbar">
             <div class="topbar-title sidebar l-pad">
-                <a href="">
+                <a href="#" data-id="category-toggle" class="category-toggle">
                     <i class="fa fa-bars"></i>
                 </a>
                 <i class="fa fa-book"></i>
                 <h2>Books</h2>
             </div>
-            <aside class="sidebar categories standout">
+            <aside class="sidebar categories standout" data-id="categories">
                 <ul>
-                    <li><a href="#category/all">All</a></li>
-                    <li><a href="#category/scifi">Science Fiction</a></li>
-                    <li><a href="#category/horror">Horror</a></li>
-                    <li><a href="#category/romance">Romance</a></li>
-                    <li><a href="#category/sport">Sports</a></li>
+                    <li><a data-id="category" href="#category/all">All</a></li>
+                    <li><a data-id="category" href="#category/scifi">Science Fiction</a></li>
+                    <li><a data-id="category" href="#category/horror">Horror</a></li>
+                    <li><a data-id="category" href="#category/romance">Romance</a></li>
+                    <li><a data-id="category" href="#category/sport">Sports</a></li>
                 </ul>
             </aside>
         </div>
@@ -152,6 +152,7 @@
     <script src="/js/models/Books.js"></script>
     <script src="/js/views/BooksList.js"></script>
     <script src="/js/views/BookDetail.js"></script>
+    <script src="/js/views/TopBar.js"></script>
     <script src="/js/main.js"></script>
 </body>
 </html>
