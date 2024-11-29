@@ -70,3 +70,46 @@ describe("views/BookDetail", function () {
     });
 
 });
+
+describe("routers/Router", function () {
+
+    var router;
+    beforeEach(function () {
+        var MockRouter = app.routers.Router.extend({
+            home: sinon.spy(),
+            category: sinon.spy(),
+            book: sinon.spy(),
+            unknown: sinon.spy()
+        });
+        router = new MockRouter();
+
+        if (Backbone.History.started !== true) {
+            Backbone.history.start();
+        }
+
+    });
+
+    afterEach(function () {
+        router.navigate("", { trigger: true });
+    });
+
+    it('routes to home if no hash fragment is present', function () {
+        router.navigate('', { trigger: true });
+        expect(router.home.called).to.be.true;
+    });
+
+    it('routes to category if hash fragment contains "category/<catid>"', function () {
+        router.navigate('category/categoryId', { trigger: true });
+        expect(router.category.called).to.be.true;
+    });
+
+    it('routes to book if hash fragment contains "category/id/book/id"', function () {
+        router.navigate('category/id/book/id', { trigger: true });
+        expect(router.book.called).to.be.true;
+    });
+
+    it('routes to unknown if hash fragment is not recognized', function () {
+        router.navigate('unknown', { trigger: true });
+        expect(router.unknown.called).to.be.true;
+    });
+});
